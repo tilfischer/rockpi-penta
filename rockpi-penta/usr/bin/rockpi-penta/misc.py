@@ -20,7 +20,12 @@ cmds = {
     'disk': "df -h | awk '$NF==\"/\"{printf \"Disk: %d/%dGB %s\", $3,$2,$5}'"
 }
 
-lv2dc = OrderedDict({'lv3': 0, 'lv2': 0.25, 'lv1': 0.5, 'lv0': 0.75})
+# For the fan supplied with the Radxa Penta SATA HAT TOP Board, the fan stopped runnign with duty 
+# cycles (dc) >0.4. The fan could be slowed down, but only a little bit and still made considerable noise. 
+# For the silent Noctua A4x20 5W PWM fan, the default duty cycles provided by Radxa are fine. 
+# The Noctua fan showed alternating speed and clicking noises at a duty cycles >0.75.
+
+lv2dc = OrderedDict({'lv3': 0, 'lv2': 0.25, 'lv1': 0.5, 'lv0': 0.75}) 
 
 
 def check_output(cmd):
@@ -152,7 +157,7 @@ def fan_temp2dc(t):
     for lv, dc in lv2dc.items():
         if t >= conf['fan'][lv]:
             return dc
-    return 0.999
+    return 1.0 # 0.999... is 1
 
 
 def fan_switch():

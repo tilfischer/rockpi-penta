@@ -23,4 +23,3 @@ if [[ $count -gt 0 ]]; then
 elif [[ $active_disks -eq 0 ]]; then
     echo "25000" > "$LOG_FILE"  # All disks are in standby, assuming that they are at 25 °C
 fi
-
