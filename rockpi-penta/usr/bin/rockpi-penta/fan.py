@@ -68,7 +68,7 @@ class Gpio:
 
 
 def read_temp():
-    with open('/sys/class/thermal/thermal_zone0/temp') as f:
+    with open('/var/log/avg_disk_temps.log') as f:
         t = int(f.read().strip()) / 1000.0
     return t
 
@@ -77,7 +77,7 @@ def get_dc(cache={}):
     if misc.conf['run'].value == 0:
         return 0.999
 
-    if time.time() - cache.get('time', 0) > 60:
+    if time.time() - cache.get('time', 0) > 10:
         cache['time'] = time.time()
         cache['dc'] = misc.fan_temp2dc(read_temp())
 
