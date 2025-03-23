@@ -2,7 +2,7 @@
 
 This is an slightly modified version of https://github.com/radxa/rockpi-penta to use average disk temperatures from SMART values instead of CPU temperature to control the fan speed of the Radxa Penta SATA HAT Top Board in combination with OMV and hd-idle (see https://github.com/adelolmo/hd-idle) to spin down inactive disk to save energy. 
 
-Building the NAS was inspired by Jeff Geerling (see https://www.jeffgeerling.com/blog/2024/radxas-sata-hat-makes-compact-pi-5-nas), though I decided not to add four 8 TB Samsung EVO 870 QVO but use the pile of old 500GB laptop hard drives lying around here. We are fine with 2 TB total storage capacity. However, HDDs get much hotter than SSDs, especially if they are stacked that tight.  
+Building the NAS was inspired by Jeff Geerling (see https://www.jeffgeerling.com/blog/2024/radxas-sata-hat-makes-compact-pi-5-nas), though I decided not to add four 8 TB Samsung EVO 870 QVO but used the pile of old 500GB laptop hard drives lying around here. We are fine with 2 TB total storage capacity. However, HDDs get much hotter than SSDs, especially if they are stacked that tight.  
 
 ## Hardware
 
@@ -10,7 +10,7 @@ Building the NAS was inspired by Jeff Geerling (see https://www.jeffgeerling.com
 - Radxa Penta SATA HAT for Raspi 5 (see https://docs.radxa.com/en/accessories/penta-sata-hat)
 - 4x 2.5" HDDs (or SSDs; I use RAID5)
 - Radxa Penta SATA HAT Top Board (see https://docs.radxa.com/en/accessories/penta-sata-hat/sata-hat-top-board)
-- Noctua A4x20 5W PWM fan (the original fan was noisy and the revolutions per second could only be regulated moderately.)
+- Noctua A4x20 5W PWM fan (the original fan was noisy and the revolutions per second could only be regulated moderately)
 - Official Raspberry Pi 27W USB-C power supply 
 - Box with various M2.5 hex brass spacers
 
