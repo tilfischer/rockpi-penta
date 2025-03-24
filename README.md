@@ -2,7 +2,7 @@
 
 This is an slightly modified version of https://github.com/radxa/rockpi-penta to use average disk temperatures from SMART values instead of CPU temperature to control the fan speed of the Radxa Penta SATA HAT Top Board in combination with OMV and hd-idle (see https://github.com/adelolmo/hd-idle) to spin down inactive disk to save energy. 
 
-The Radxa Penta SATA HAT Top Board with its fan is sitting directly on top of the disk, hence, it should cool the disks. The Raspberry Pi is far away from this fan and is cooled with its own heat sink and fan.
+The Radxa Penta SATA HAT Top Board with its fan is sitting directly on top of the disk, hence, it should cool the disks. The Raspberry Pi is far away from this fan. Consequently, it should be cooled with its own heat sink and fan.
 
 Building the NAS was inspired by Jeff Geerling (see https://www.jeffgeerling.com/blog/2024/radxas-sata-hat-makes-compact-pi-5-nas), though I decided not to add four 8 TB Samsung EVO 870 QVO but used the pile of old laptop hard drives lying around here. However, HDDs get much hotter than SSDs, especially if they are stacked that tight.  
 
