@@ -21,5 +21,14 @@ if [[ $count -gt 0 ]]; then
     avg_temp=$(printf "%.0f" "$avg_temp")  # Remove decimals
     echo "$avg_temp" >> "$LOG_FILE"
 elif [[ $active_disks -eq 0 ]]; then
-    echo "25000" >> "$LOG_FILE"  # All disks are in standby, assuming that they are at 25 °C
+    # Check the last line of the log file
+    if [[ -f "$LOG_FILE" ]]; then
+        last_line=$(tail -n 1 "$LOG_FILE")
+    else
+        last_line=""
+    fi
+    # Append 25000 only if the last line is not 25000
+    if [[ "$last_line" != "25000" ]]; then
+        echo "25000" >> "$LOG_FILE"  # All disks are in standby, assuming that they are at 25 °C
+    fi
 fi
