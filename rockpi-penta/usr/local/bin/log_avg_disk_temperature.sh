@@ -19,7 +19,7 @@ done < <(smartctl --scan | awk '{print $1}')
 if [[ $count -gt 0 ]]; then
     avg_temp=$(echo "scale=5; $total_temp / $count * 1000" | bc)  # Multiply by 1000
     avg_temp=$(printf "%.0f" "$avg_temp")  # Remove decimals
-    echo "$avg_temp" > "$LOG_FILE"
+    echo "$avg_temp" >> "$LOG_FILE"
 elif [[ $active_disks -eq 0 ]]; then
-    echo "25000" > "$LOG_FILE"  # All disks are in standby, assuming that they are at 25 °C
+    echo "25000" >> "$LOG_FILE"  # All disks are in standby, assuming that they are at 25 °C
 fi

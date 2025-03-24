@@ -69,7 +69,9 @@ class Gpio:
 
 def read_temp():
     with open('/var/log/avg_disk_temps.log') as f:
-        t = int(f.read().strip()) / 1000.0
+        lines = f.readlines()
+        last_line = lines[-1].strip()
+        t = int(last_line) / 1000.0    
     return t
 
 
