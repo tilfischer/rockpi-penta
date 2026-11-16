@@ -33,14 +33,10 @@ The HDDs should spin down after inactivity using hd-idle and its default idle ti
 
 Enjoy!
 
---- CONTENT OF ORIGINAL README ---
+# Radxa Penta SATA
 
-# ROCK Pi Penta SATA
+Official documentation:
 
-Top Board control program
+[Penta SATA HAT documentation](https://docs.radxa.com/en/accessories/storage/penta-sata-hat)
 
-[Penta SATA HAT wiki](<https://wiki.radxa.com/Penta_SATA_HAT>)
-
-[Penta SATA HAT docs](https://docs.radxa.com/en/accessories/penta-sata-hat)
-
-![penta-hat](images/penta-sata-hat.png)
+[Penta SATA HAT Top Board documentation](https://docs.radxa.com/en/accessories/storage/penta-sata-hat/sata-hat-top-board)
