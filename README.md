@@ -33,6 +33,14 @@ The HDDs should spin down after inactivity using hd-idle and its default idle ti
 
 Enjoy!
 
+## GPIO chip renumbering fix
+
+Newer Raspberry Pi OS kernels (6.6.45 and later) no longer expose the Pi 5's header GPIOs (RP1, `pinctrl-rp1`) as `/dev/gpiochip4`. Depending on kernel and device tree, the chip now shows up as `gpiochip0` or under a dynamically assigned number (e.g. `gpiochip15`). The original configuration hard-codes chip `4`, so after a kernel update the service crashes with `FileNotFoundError`. This results in the fan running at 100% and the OLED display stays dark.
+
+Please note, that I fixed this in this fork only for the Raspberry Pi 5.
+- `env/rpi5.env` addresses the GPIO chip by its label (`pinctrl-rp1`) instead of a number, so it no longer matters which number the kernel assigns.
+- `postinst` explicitly upgrades `adafruit-blinka` on installation, as older Blinka releases hard-code `gpiochip4` for the Pi 5 and break the OLED.
+
 # Radxa Penta SATA
 
 Official documentation:
