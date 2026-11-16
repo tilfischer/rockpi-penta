@@ -32,9 +32,9 @@ armbian_require_overlay() {
 }
 
 if [ "$(python3 -c 'import sys; print(f"{sys.version_info.minor >= 11}")')" = "True" ]; then
-  pip3 install adafruit-circuitpython-ssd1306 --break-system-packages
+  pip3 install --upgrade adafruit-circuitpython-ssd1306 adafruit-blinka --break-system-packages
 else
-  pip3 install adafruit-circuitpython-ssd1306
+  pip3 install --upgrade adafruit-circuitpython-ssd1306 adafruit-blinka
 fi
 
 systemctl enable rockpi-penta.service
