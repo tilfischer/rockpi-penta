@@ -44,6 +44,10 @@ Please note, that I fixed this in this fork only for the Raspberry Pi 5 and Rasp
 
 Please note, that I tested this on a Raspberry Pi 5. This was not tested on a Raspberry Pi 4.
 
+## Note on OMV 8
+
+This code uses the libgpiod v1 Python API. Debian Trixie, and so Raspberry Pi OS Trixie and OMV 8, ships python3-libgpiod v2 and that version removed this API. The Chip() only accepts a path, not a label. The service will crash there no matter what the .env files provide. On bookworm / OMV 7 you're fine. The update of this repo to make it fly with OMV 8 does sit on my todo list.
+
 # Radxa Penta SATA
 
 Official documentation:
