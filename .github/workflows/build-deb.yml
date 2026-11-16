@@ -2,6 +2,11 @@ name: Build DEB Package
 
 on:
   push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -9,12 +14,29 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Set package version from tag
+        run: |
+          version=$(echo "${GITHUB_REF_NAME#v}" | tr '-' '~')   # v0.4.0-beta.1 -> 0.4.0~beta.1
+          sed -i "s/^Version:.*/Version: ${version}/" rockpi-penta/DEBIAN/control
+          echo "DEB_VERSION=${version}" >> "$GITHUB_ENV"
+
       - name: Build DEB package
         run: |
           chmod -R 775 rockpi-penta/DEBIAN/
           dpkg-deb --build -Z gzip rockpi-penta
+          mv rockpi-penta.deb rockpi-penta_${DEB_VERSION}_all.deb
+
       - name: Upload DEB package
         uses: actions/upload-artifact@v4
         with:
-          name: rockpi-penta.deb
-          path: rockpi-penta.deb
+          name: rockpi-penta_${{ env.DEB_VERSION }}_all.deb
+          path: rockpi-penta_${{ env.DEB_VERSION }}_all.deb
+
+      - name: Create release with DEB
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          deb="rockpi-penta_${DEB_VERSION}_all.deb"
+          pre=""; [[ "$GITHUB_REF_NAME" == *-* ]] && pre="--prerelease"
+          gh release create "$GITHUB_REF_NAME" "$deb" --title "$GITHUB_REF_NAME" --generate-notes $pre
