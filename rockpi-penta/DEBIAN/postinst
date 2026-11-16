@@ -49,7 +49,7 @@ case "$model" in
   ;;
 *"Raspberry Pi 4"*)
   raspi-config nonint do_i2c 0 >/dev/null || true
-  mv /usr/bin/rockpi-penta/env/rpi4.env /etc/rockpi-penta.env
+  cp /usr/bin/rockpi-penta/env/rpi4.env /etc/rockpi-penta.env
   systemctl start rockpi-penta.service
   ;;
 *"ROCK 5"*)
