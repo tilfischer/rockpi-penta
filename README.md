@@ -37,9 +37,12 @@ Enjoy!
 
 Newer Raspberry Pi OS kernels (6.6.45 and later) no longer expose the Pi 5's header GPIOs (RP1, `pinctrl-rp1`) as `/dev/gpiochip4`. Depending on kernel and device tree, the chip now shows up as `gpiochip0` or under a dynamically assigned number (e.g. `gpiochip15`). The original configuration hard-codes chip `4`, so after a kernel update the service crashes with `FileNotFoundError`. This results in the fan running at 100% and the OLED display stays dark.
 
-Please note, that I fixed this in this fork only for the Raspberry Pi 5.
+Please note, that I fixed this in this fork only for the Raspberry Pi 5 and Raspberry Pi 4. The Rockchip boards should not be affected, as their GPIO chip numbers are derived in a different way.
 - `env/rpi5.env` addresses the GPIO chip by its label (`pinctrl-rp1`) instead of a number, so it no longer matters which number the kernel assigns.
+- `env/rpi4.env` also addresses the GPIO chip by its label (`pinctrl-bcm2711`). The Pi 4 is not affected by the renumbering today, but I wanted to make this a bit more robust for future changes. 
 - `postinst` explicitly upgrades `adafruit-blinka` on installation, as older Blinka releases hard-code `gpiochip4` for the Pi 5 and break the OLED.
+
+Please note, that I tested this on a Raspberry Pi 5. This was not tested on a Raspberry Pi 4.
 
 # Radxa Penta SATA
 
