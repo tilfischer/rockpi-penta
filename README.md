@@ -9,13 +9,13 @@ Building the NAS was inspired by Jeff Geerling (see https://www.jeffgeerling.com
 ## Hardware
 
 - Raspberry Pi 5 (sitting in (slightly modified) Argon NEO BRED for cooling purposes (without cover) and GPIO stacking header)
-- Radxa Penta SATA HAT for Raspi 5 (see https://docs.radxa.com/en/accessories/penta-sata-hat)
+- Radxa Penta SATA HAT for Raspberry Pi 5
 - 4x 2.5" HDDs (or SSDs)
-- Radxa Penta SATA HAT Top Board (see https://docs.radxa.com/en/accessories/penta-sata-hat/sata-hat-top-board)
+- Radxa Penta SATA HAT Top Board
 - Noctua A4x20 5W PWM fan (the original fan was noisy and the revolutions per second could only be regulated moderately)
-- Official Raspberry Pi 27W USB-C power supply 
+- Official Raspberry Pi 27W USB-C power supply (no undervoltage detected so far after more than a year of running)
 - Box with various M2.5 hex brass spacers
-- 3D printed cover (this is on my to do list; the Argon NEO BRED base offers some nice options to attache the cover)
+- 3D printed cover (this is on my to do list, photographs and STL will follow when this got done)
 
 ## Software
 
@@ -46,7 +46,7 @@ Please note, that I tested this on a Raspberry Pi 5. This was not tested on a Ra
 
 ## Note on OMV 8
 
-This code uses the libgpiod v1 Python API. Debian Trixie, and so Raspberry Pi OS Trixie and OMV 8, ships python3-libgpiod v2 and that version removed this API. The Chip() only accepts a path, not a label. The service will crash there no matter what the .env files provide. On bookworm / OMV 7 you're fine. The update of this repo to make it fly with OMV 8 does sit on my todo list.
+This code uses the libgpiod v1 Python API. Debian Trixie, and so Raspberry Pi OS Trixie and OMV 8, ships python3-libgpiod v2 and that version removed this API. The Chip() only accepts a path, not a label. The service will crash there no matter what the .env files provide. On bookworm / OMV 7 you're fine. The update of this repo to make it fly with OMV 8 does sit on my to do list.
 
 # Radxa Penta SATA
 
